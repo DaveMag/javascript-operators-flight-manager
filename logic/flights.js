@@ -1,25 +1,39 @@
 function Flights() {
-   function calculateNumberOfFlights() {
-    if(passengers < 0) {
-      return alert("The number of passengers must be a positive integer value");
-    } else if (capacity < 0) {
-      return alert("The capacity of the flight must be a positive integer number value");
+   function calculateNumberOfFlights(passengers, capacity) {
+     let flights;
+    if((passengers < 0) || (!Number.isInteger(Number(passengers)))) {
+      throw new Error("The number of passengers must be a positive integer value");
     }
+    if((capacity < 0) || (!Number.isInteger(Number(capacity)))) {
+      throw new Error("The capacity of the flight must be a positive integer number value");
+    }
+    if(passengers % capacity == 0) {
+      flights = passengers/capacity;
+    } else {
+      flights = Math.floor(passengers/capacity) + 1;
+    }
+    return flights;
 }
-  function checkAircraftRevision(distanceLimit, distanceArray) {
-    if(distance <= distanceLimit/2) {
+
+  function checkAircraftRevision(distanceLimit, distancesArray) {
+    let totalDistance = 0;
+    let distance;
+    for(distance of distancesArray) {
+      totalDistance += distance;
+    }
+    if(totalDistance > distanceLimit) {
+    throw new Error("Flight maximum allowed distance (" + distanceLimit + ") exceeded. No flight is allowed any longer, you need to make the revision immediately.");
+    }
+    if(totalDistance <= distanceLimit/2) {
       return "The revision needs to be done within the next 3 months";
-    } else if(distance > distanceLimit/2 && distance <= (distanceLimit/4)*3) {
+    } else if(totalDistance <= 3 * distanceLimit/4) {
       return "The revision needs to be done within the next 2 months";
-    } else if(distance > (distanceLimit/4)*3 && distance <= distanceLimit) {
-      return "The revision needs to be done next month";
-    } else if(distance > distanceLimit) {
-      console.error("Too far");
+    } else {
+      return "The revision needs to be done the next month";
     }
   }
   return {calculateNumberOfFlights, checkAircraftRevision};
 }
 
 
-
-module.export = Flights();
+module.exports = Flights();
