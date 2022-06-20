@@ -31,7 +31,10 @@ function Passengers() {
     var regularEconomyConfiguration = {passengers: regularBusinessConfiguration, seats: vipEconomyConfiguration.seats};
     regularPassengersWithEconomySeats = updateConfiguration(regularEconomyConfiguration, economySeatsPerFlight);
 
-    return {vipPassengersWithBusinessSeats: vipPassengersWithBusinessSeats, vipPassengersWithEconomySeats: vipPassengersWithEconomySeats, regularPassengersWithBusinessSeats: regularPassengersWithBusinessSeats, regularPassengersWithEconomySeats: regularPassengersWithEconomySeats};
+    return {vipPassengersWithBusinessSeats: vipPassengersWithBusinessSeats,
+      vipPassengersWithEconomySeats: vipPassengersWithEconomySeats,
+      regularPassengersWithBusinessSeats: regularPassengersWithBusinessSeats,
+      regularPassengersWithEconomySeats: regularPassengersWithEconomySeats};
   }
 
   function updateConfiguration(configuration, seatsPerFlight) {
