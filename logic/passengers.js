@@ -11,28 +11,53 @@ function Passengers() {
     return passengersNumber;
   }
 
-  function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, nrOfFlights, businessSeatsPerFlight, economySeatsPerFlight) {
-    let vipPassengersWithBusinessSeats = 0, vipPassengersWithEconomySeats = 0, regularPassengersWithBusinessSeats = 0, regularPassengersWithEconomySeats = 0;
-    let availableBusinessSeats = nrOfFlights * businessSeatsPerFlight;
-    let availableEconomySeats = nrOfFlights * economySeatsPerFlight;
+  // function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, nrOfFlights, businessSeatsPerFlight, economySeatsPerFlight) {
+  //   let vipPassengersWithBusinessSeats = 0, vipPassengersWithEconomySeats = 0, regularPassengersWithBusinessSeats = 0, regularPassengersWithEconomySeats = 0;
+  //   let availableBusinessSeats = nrOfFlights * businessSeatsPerFlight;
+  //   let availableEconomySeats = nrOfFlights * economySeatsPerFlight;
+  //
+  //   var vipBusinessConfiguration = {passengers: vipPassengers, seats: availableBusinessSeats};
+  //   vipPassengersWithBusinessSeats = updateConfiguration(vipBusinessConfiguration, businessSeatsPerFlight);
+  //
+  //   var vipEconomyConfiguration = {passengers: vipBusinessConfiguration.passengers, seats: availableEconomySeats};
+  //   vipPassengersEconomyseats = updateConfiguration(vipEconomyConfiguration, economySeatsPerFlight);
+  //
+  //   var regularBusinessConfiguration = {passengers: regularPassengers, seats: vipBusinessConfiguration.seats};
+  //   regularPassengersWithBusinessSeats = updateConfiguration(regularBusinessConfiguration, businessSeatsPerFlight);
+  //
+  //   var regularEconomyConfiguration = {passengers: regularBusinessConfiguration.passengers, seats: vipEconomyConfiguration.seats};
+  //   regularPassengersWithEconomySeats = updateConfiguration(regularEconomyConfiguration, economySeatsPerFlight);
+  //
+  //   return {vipPassengersWithBusinessSeats: vipPassengersWithBusinessSeats,
+  //     vipPassengersWithEconomySeats: vipPassengersWithEconomySeats,
+  //     regularPassengersWithBusinessSeats: regularPassengersWithBusinessSeats,
+  //     regularPassengersWithEconomySeats: regularPassengersWithEconomySeats};
+  // }
+  function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, nrOfFlights,
+        businessSeatsPerFlight, economySeatsPerFlight) {
 
-    var vipBusinessConfiguration = {passengers: vipPassengers, seats: availableBusinessSeats};
-    vipPassengersWithBusinessSeats = updateConfiguration(vipBusinessConfiguration, businessSeatsPerFlight);
+        let vipPassengersWithBusinessSeats=0, vipPassengersWithEconomySeats=0,
+        regularPassengersWithBusinessSeats=0, regularPassengersWithEconomySeats=0;
+        let availableBusinessSeats = nrOfFlights * businessSeatsPerFlight;
+        let availableEconomySeats = nrOfFlights * economySeatsPerFlight;
 
-    var vipEconomyConfiguration = {passengers: vipBusinessConfiguration.passengers, seats: availableEconomySeats};
-    vipPassengersEconomyseats = updateConfiguration(vipEconomyConfiguration, economySeatsPerFlight);
+        var vipBusinessConfiguration = {passengers:vipPassengers, seats:availableBusinessSeats};
+        vipPassengersWithBusinessSeats = updateConfiguration(vipBusinessConfiguration, businessSeatsPerFlight);
 
-    var regularBusinessConfiguration = {passengers: regularPassengers, seats: vipBusinessConfiguration.seats};
-    regularPassengersWithBusinessSeats = updateConfiguration(regularBusinessConfiguration, businessSeatsPerFlight);
+        var vipEconomyConfiguration = {passengers:vipBusinessConfiguration.passengers, seats:availableEconomySeats};
+        vipPassengersWithEconomySeats = updateConfiguration(vipEconomyConfiguration, economySeatsPerFlight);
 
-    var regularEconomyConfiguration = {passengers: regularBusinessConfiguration.passengers, seats: vipEconomyConfiguration.seats};
-    regularPassengersWithEconomySeats = updateConfiguration(regularEconomyConfiguration, economySeatsPerFlight);
+        var regularBusinessConfiguration = {passengers:regularPassengers, seats:vipBusinessConfiguration.seats};
+        regularPassengersWithBusinessSeats = updateConfiguration(regularBusinessConfiguration, businessSeatsPerFlight);
 
-    return {vipPassengersWithBusinessSeats: vipPassengersWithBusinessSeats,
-      vipPassengersWithEconomySeats: vipPassengersWithEconomySeats,
-      regularPassengersWithBusinessSeats: regularPassengersWithBusinessSeats,
-      regularPassengersWithEconomySeats: regularPassengersWithEconomySeats};
-  }
+        var regularEconomyConfiguration = {passengers:regularBusinessConfiguration.passengers, seats:vipEconomyConfiguration.seats};
+        regularPassengersWithEconomySeats = updateConfiguration(regularEconomyConfiguration, economySeatsPerFlight);
+
+        return {vipPassengersWithBusinessSeats:vipPassengersWithBusinessSeats,
+                vipPassengersWithEconomySeats:vipPassengersWithEconomySeats, regularPassengersWithBusinessSeats:regularPassengersWithBusinessSeats,
+                regularPassengersWithEconomySeats:regularPassengersWithEconomySeats};
+    }
+
 
   function updateConfiguration(configuration, seatsPerFlight) {
     let passengersWithSeats = 0;
