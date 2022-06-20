@@ -5,7 +5,7 @@ function Flights() {
     } else if (capacity < 0) {
       return alert("The capacity of the flight must be a positive integer number value");
     }
-  }
+}
   function checkAircraftRevision(distanceLimit, distanceArray) {
     if(distance <= distanceLimit/2) {
       return "The revision needs to be done within the next 3 months";
