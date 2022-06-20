@@ -7,6 +7,7 @@ for (value in distributedPassengers) {
 }
 return totalDistributedPassengers;
   }
+
   function calculateTotalNumberOfPassengers(passengersArray) {
     let totalNumberOfPassengers = 0;
     let passengers;
@@ -15,7 +16,7 @@ return totalDistributedPassengers;
     }
     return totalNumberOfPassengers;
   }
-  return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers}
+  return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers};
 }
 
 module.exports = Util();

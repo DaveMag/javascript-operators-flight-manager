@@ -1,21 +1,18 @@
 function Passengers() {
   function checkFlightCapacity(flightCapacity, passengersArray) {
     let passengersNumber = 0;
-    let passengers
+    let passengers;
     for(passengers of passengersArray) {
       passengersNumber += passengers;
     }
     if(passengersNumber > flightCapacity) {
-      throw new Error("Flight capacity (" + flightCapacity + ") exceeded. You have " + passengersNumber + " passengers.")
+      throw new Error("Flight capacity (" + flightCapacity + ") exceeded. You have " + passengersNumber + " passengers.");
     }
     return passengersNumber;
   }
 
   function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, nrOfFlights, businessSeatsPerFlight, economySeatsPerFlight) {
-    let vipPassengersWithBusinessSeats = 0;
-    let vipPassengersWithEconomySeats = 0;
-    let regularPassengersWithBusinessSeats = 0;
-    let regularPassengersWithEconomySeats = 0;
+    let vipPassengersWithBusinessSeats = 0, vipPassengersWithEconomySeats = 0, regularPassengersWithBusinessSeats = 0, regularPassengersWithEconomySeats = 0;
     let availableBusinessSeats = nrOfFlights * businessSeatsPerFlight;
     let availableEconomySeats = nrOfFlights * economySeatsPerFlight;
 
@@ -28,7 +25,7 @@ function Passengers() {
     var regularBusinessConfiguration = {passengers: regularPassengers, seats: vipBusinessConfiguration.seats};
     regularPassengersWithBusinessSeats = updateConfiguration(regularBusinessConfiguration, businessSeatsPerFlight);
 
-    var regularEconomyConfiguration = {passengers: regularBusinessConfiguration, seats: vipEconomyConfiguration.seats};
+    var regularEconomyConfiguration = {passengers: regularBusinessConfiguration.passengers, seats: vipEconomyConfiguration.seats};
     regularPassengersWithEconomySeats = updateConfiguration(regularEconomyConfiguration, economySeatsPerFlight);
 
     return {vipPassengersWithBusinessSeats: vipPassengersWithBusinessSeats,
